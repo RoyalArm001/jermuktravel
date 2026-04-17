@@ -1,0 +1,21 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="30" fill="#0A3D91"/>
+  <mask id="uk-mask" x="2" y="2" width="60" height="60" maskUnits="userSpaceOnUse">
+    <circle cx="32" cy="32" r="30" fill="white"/>
+  </mask>
+  <g mask="url(#uk-mask)">
+    <rect x="2" y="2" width="60" height="60" fill="#0A3D91"/>
+    <path d="M2 8.5L8.5 2H17L2 17V8.5Z" fill="white"/>
+    <path d="M62 8.5L55.5 2H47L62 17V8.5Z" fill="white"/>
+    <path d="M2 55.5L8.5 62H17L2 47V55.5Z" fill="white"/>
+    <path d="M62 55.5L55.5 62H47L62 47V55.5Z" fill="white"/>
+    <path d="M2 5.75L5.75 2H10.5L2 10.5V5.75Z" fill="#D93035"/>
+    <path d="M62 5.75L58.25 2H53.5L62 10.5V5.75Z" fill="#D93035"/>
+    <path d="M2 58.25L5.75 62H10.5L2 53.5V58.25Z" fill="#D93035"/>
+    <path d="M62 58.25L58.25 62H53.5L62 53.5V58.25Z" fill="#D93035"/>
+    <rect x="26" y="2" width="12" height="60" fill="white"/>
+    <rect x="2" y="26" width="60" height="12" fill="white"/>
+    <rect x="28.5" y="2" width="7" height="60" fill="#D93035"/>
+    <rect x="2" y="28.5" width="60" height="7" fill="#D93035"/>
+  </g>
+</svg>

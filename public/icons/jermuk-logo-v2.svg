@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Jermuk Travel logo</title>
+  <desc id="desc">A clean Jermuk brand mark with a map pin, mountain silhouette, and healing water ripples.</desc>
+  <defs>
+    <radialGradient id="halo" cx="50%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#dff8ff" stop-opacity="0.95" />
+      <stop offset="62%" stop-color="#c8f0fb" stop-opacity="0.38" />
+      <stop offset="100%" stop-color="#c8f0fb" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="pin" x1="256" y1="82" x2="256" y2="404" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8ce0ff" />
+      <stop offset="46%" stop-color="#29abd3" />
+      <stop offset="100%" stop-color="#0d5a67" />
+    </linearGradient>
+    <linearGradient id="mountain" x1="188" y1="245" x2="324" y2="323" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0e7084" />
+      <stop offset="100%" stop-color="#0a4958" />
+    </linearGradient>
+    <linearGradient id="ripple" x1="164" y1="408" x2="348" y2="408" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#8be5ff" />
+      <stop offset="100%" stop-color="#159cc8" />
+    </linearGradient>
+    <filter id="shadow" x="84" y="56" width="344" height="396" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0b5466" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <circle cx="256" cy="230" r="176" fill="url(#halo)" />
+
+  <g filter="url(#shadow)">
+    <ellipse cx="256" cy="392" rx="120" ry="24" fill="#0b5362" fill-opacity="0.12" />
+    <path
+      fill="url(#pin)"
+      d="M256 76C178.68 76 118 136.68 118 214c0 52.53 29.8 97.65 62.5 141.63 24.67 33.15 49.73 66.86 67.31 100.99 3.11 6.03 11.27 6.03 14.38 0 17.58-34.13 42.64-67.84 67.31-100.99C362.2 311.65 392 266.53 392 214 392 136.68 333.32 76 256 76Z"
+    />
+    <circle cx="256" cy="206" r="66" fill="#f7feff" fill-opacity="0.98" />
+    <path
+      fill="#caeef7"
+      d="M256 144c24.3 0 44 19.7 44 44s-19.7 44-44 44-44-19.7-44-44 19.7-44 44-44Zm0 18c-14.36 0-26 11.64-26 26s11.64 26 26 26 26-11.64 26-26-11.64-26-26-26Z"
+    />
+    <path
+      fill="url(#mountain)"
+      d="M188 290c17-35 40-55 68-55 27 0 50 20 68 55v34H188v-34Z"
+    />
+    <path
+      fill="#dff9ff"
+      d="M212 290c12-18 26-31 44-31 18 0 32 13 44 31h-15c-8-10-18-16-29-16s-21 6-29 16h-15Z"
+      fill-opacity="0.9"
+    />
+    <circle cx="323" cy="148" r="17" fill="#ffd46e" fill-opacity="0.96" />
+  </g>
+
+  <g fill="none" stroke="url(#ripple)" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="256" cy="408" rx="92" ry="22" stroke-width="16" />
+    <ellipse cx="256" cy="408" rx="58" ry="13" stroke-width="10" stroke-opacity="0.78" />
+    <path d="M223 373c9 10 20 16 33 16s24-6 33-16" stroke-width="10" stroke-opacity="0.84" />
+  </g>
+</svg>

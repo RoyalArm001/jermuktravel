@@ -1,0 +1,17 @@
+{
+  "name": "Jermuk Travel",
+  "short_name": "Jermuk",
+  "description": "Digital travel guide for Jermuk with routes, places, and live weather.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#eef6f8",
+  "theme_color": "#0f5a66",
+  "icons": [
+    {
+      "src": "/icons/icon-512-maskable.png?v=20260330c",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

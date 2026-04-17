@@ -1,93 +1,101 @@
 # Jermuk Travel
 
-Next.js full-stack project for a mobile-first social travel platform.
+Multilingual React + Vite city guide for Jermuk with:
 
-## What this version includes
+- public pages
+- admin CMS
+- live weather
+- AI assistant
+- Firebase view analytics
+- PWA/service worker support
 
-- Beautiful responsive landing design with meaningful animations
-- User registration and authentication (email/password + optional Google)
-- Traveler community stories (users can share places and photo URLs)
-- Inquiry capture for your sales/concierge workflow
-- WordPress CMS bridge via REST API
-- Prisma + PostgreSQL data model for long-term growth
+## Local development
 
-## Stack
+Requirements:
 
-- Next.js App Router
-- Tailwind CSS v4
-- NextAuth
-- Prisma ORM
-- PostgreSQL
+- Node.js 22.16.0
+- npm
 
-## Setup
-
-1. Copy `.env.example` to `.env`
-2. Fill in:
-   - `DATABASE_URL`
-   - `NEXTAUTH_URL`
-   - `NEXTAUTH_SECRET`
-   - `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` (optional)
-   - `WORDPRESS_API_URL` (optional)
-   - `WORDPRESS_API_USER` and `WORDPRESS_API_APP_PASSWORD` (optional)
-3. Generate Prisma client
-4. Run migration
-5. Start dev server
+Commands:
 
 ```bash
 npm install
-npm run prisma:generate
-npm run prisma:migrate -- --name init
 npm run dev
-```
-
-## Main Routes
-
-- `/` mobile-first landing and community sections
-- `/auth/sign-up` registration
-- `/auth/sign-in` sign in
-- `/account` signed-in profile page
-- `/api/stories` traveler story list/create
-- `/api/inquiries` inquiry create
-- `/api/cms/posts` WordPress feed proxy
-
-## Database Planning
-
-Full data model explanation:
-
-- `docs/data-model-plan.md`
-
-Short version:
-- App DB stores users, stories, tags, media, inquiries.
-- WordPress stores editorial content and is fetched through API.
-
-## Important Security Note
-
-- Google password is never stored.
-- Local credentials passwords are stored only as secure hashes.
-
-## Deploy (Vercel)
-
-```bash
+npm run lint
 npm run build
-npm run start
 ```
 
-Production checklist:
+## Environment variables
 
-- Production PostgreSQL database
-- `DATABASE_URL`
-- Correct `NEXTAUTH_URL`
-- Strong `NEXTAUTH_SECRET`
-- Google OAuth callback URLs (if Google auth is enabled)
-- WordPress REST URL (if CMS feed is enabled)
-- Keep `.env` local only. Put production secrets in the Vercel dashboard instead of committing them.
+Copy values from `.env.example` and set the real values in your deployment environment.
 
-For Vercel:
+Required for production:
 
-- Import the repository as a regular Next.js project
-- Keep the framework as `Next.js`
-- Leave the output directory empty
-- Add the required environment variables in the Vercel dashboard
-- Add the production domain in `Settings -> Domains` before pointing DNS at it
-- Run Prisma migrations against the production database before first use
-- Set `NEXTAUTH_URL` to your production domain, for example `https://jermuktravel.com`
+- `VITE_SITE_URL`
+- `VITE_AI_ENDPOINT`
+- `VITE_FIREBASE_RTDB_URL`
+- `VITE_FIREBASE_RTDB_NODE`
+- `VITE_ADMIN_USERNAME`
+- `VITE_ADMIN_PASSWORD`
+
+Optional:
+
+- `VITE_ANDROID_APP_URL`
+- `VITE_IOS_APP_URL`
+- `VITE_FIREBASE_RTDB_WRITE_ENABLED`
+
+## Cloudflare Pages
+
+Recommended Pages settings:
+
+- Framework preset: `Vite`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Root directory: `/`
+- Node version: `22.16.0`
+
+Important notes:
+
+- This project uses `BrowserRouter`.
+- Keep the app as a single-page application.
+- Do not add a top-level `404.html` file unless you also want to change the SPA fallback behavior.
+- `dist` should contain `index.html`, `assets`, `sw.js`, `manifest.webmanifest`, `robots.txt`, and `sitemap.xml`.
+
+## GitHub -> Cloudflare deploy checklist
+
+1. Push the repository to GitHub.
+2. Import the repository into Cloudflare Pages.
+3. Set the production environment variables in Cloudflare Pages.
+4. Confirm:
+   - build command is `npm run build`
+   - output directory is `dist`
+   - Node version is `22.16.0`
+5. Add the custom domain.
+6. After the first deploy, test these direct URLs:
+   - `/`
+   - `/places`
+   - `/routes`
+   - `/ai`
+   - `/help`
+   - `/faq`
+   - `/about`
+   - `/contact`
+   - `/terms`
+   - `/privacy`
+   - `/admin/login`
+   - `/admin`
+
+## Deployment checks already passing
+
+Current local verification:
+
+- `npm run lint`
+- `npm run build`
+
+## Notes
+
+- AI falls back to local answers if the remote AI endpoint is unavailable.
+- Weather loads from Open-Meteo at runtime.
+- View analytics write to Firebase Realtime Database.
+- If your Firebase rules allow public reads but block writes, set `VITE_FIREBASE_RTDB_WRITE_ENABLED=false` to keep the footer counter in read-only mode without repeated `401 Unauthorized` write attempts.
+- The service worker is enabled only in production builds.
