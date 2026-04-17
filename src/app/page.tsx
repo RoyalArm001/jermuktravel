@@ -12,6 +12,7 @@ import { CommunityExperience } from "@/components/community/community-experience
 import { CmsFeed } from "@/components/community/cms-feed";
 import { InquiryForm } from "@/components/forms/inquiry-form";
 import {
+  getAuthConfigurationMessage,
   getSafeAuthSession,
   isAuthReady,
   isGoogleAuthEnabled,
@@ -188,7 +189,7 @@ export default async function Home() {
                 {!isDatabaseConfigured
                   ? "The site is running in public demo mode until the production database is connected."
                   : !isAuthReady
-                  ? "Authentication is not configured yet. Add NEXTAUTH_SECRET to enable sign-in."
+                  ? getAuthConfigurationMessage()
                   : isGoogleAuthEnabled
                   ? "Google sign-in is enabled."
                   : "Add Google OAuth keys in .env to enable Google sign-in."}

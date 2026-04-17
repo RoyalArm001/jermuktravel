@@ -10,8 +10,32 @@ const googleConfigured = Boolean(
   process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET,
 );
 
-export const isAuthConfigured = Boolean(process.env.NEXTAUTH_SECRET);
+export const isAuthSecretConfigured = Boolean(process.env.NEXTAUTH_SECRET);
+export const isAuthUrlConfigured = Boolean(process.env.NEXTAUTH_URL);
+export const isAuthConfigured = isAuthSecretConfigured && isAuthUrlConfigured;
 export const isAuthReady = isAuthConfigured && isDatabaseConfigured;
+
+export function getAuthConfigurationMessage() {
+  if (!isDatabaseConfigured) {
+    return "Connect the production database first, then add `NEXTAUTH_SECRET` and `NEXTAUTH_URL` when you are ready to turn authentication on.";
+  }
+
+  const missing: string[] = [];
+
+  if (!isAuthSecretConfigured) {
+    missing.push("`NEXTAUTH_SECRET`");
+  }
+
+  if (!isAuthUrlConfigured) {
+    missing.push("`NEXTAUTH_URL`");
+  }
+
+  if (missing.length === 0) {
+    return "Authentication is configured.";
+  }
+
+  return `Add ${missing.join(" and ")} and redeploy when you are ready to enable authentication.`;
+}
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),

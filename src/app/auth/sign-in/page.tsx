@@ -2,11 +2,11 @@ import { redirect } from "next/navigation";
 import { AuthShell } from "@/components/auth/auth-shell";
 import { SignInForm } from "@/components/auth/sign-in-form";
 import {
+  getAuthConfigurationMessage,
   getSafeAuthSession,
   isAuthReady,
   isGoogleAuthEnabled,
 } from "@/lib/auth";
-import { isDatabaseConfigured } from "@/lib/prisma";
 
 export default async function SignInPage() {
   const session = await getSafeAuthSession();
@@ -33,9 +33,7 @@ export default async function SignInPage() {
             Sign in is disabled for now
           </h2>
           <p className="mt-4 max-w-xl text-base leading-8 text-stone">
-            {isDatabaseConfigured
-              ? "Add a `NEXTAUTH_SECRET` value and redeploy when you are ready to turn authentication on."
-              : "Connect the production database first, then add `NEXTAUTH_SECRET` when you are ready to turn authentication on."}
+            {getAuthConfigurationMessage()}
           </p>
         </div>
       )}

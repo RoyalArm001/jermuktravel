@@ -80,6 +80,7 @@ Production checklist:
 - Strong `NEXTAUTH_SECRET`
 - Google OAuth callback URLs (if Google auth is enabled)
 - WordPress REST URL (if CMS feed is enabled)
+- Keep `.env` local only. Put production secrets in the Vercel dashboard instead of committing them.
 
 For Vercel:
 
@@ -87,5 +88,6 @@ For Vercel:
 - Keep the framework as `Next.js`
 - Leave the output directory empty
 - Add the required environment variables in the Vercel dashboard
+- Add the production domain in `Settings -> Domains` before pointing DNS at it
 - Run Prisma migrations against the production database before first use
 - Set `NEXTAUTH_URL` to your production domain, for example `https://jermuktravel.com`
